@@ -61,6 +61,7 @@ class TerminalManager:
                     import termios
                     import tty
                     self.original_settings = termios.tcgetattr(sys.stdin)
+                    # Use cbreak mode instead of raw mode for better compatibility
                     tty.setcbreak(sys.stdin.fileno())
             except ImportError:
                 # termios not available on Windows

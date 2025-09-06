@@ -45,6 +45,7 @@ class MinesweeperApp:
             
             # Setup terminal
             self.terminal.setup()
+            self.input_handler.setup()
             
             # Main game loop
             self._main_loop()
@@ -56,7 +57,8 @@ class MinesweeperApp:
             print(f"Error: {e}", file=sys.stderr)
             return 1
         finally:
-            # Always cleanup terminal
+            # Always cleanup terminal and input
+            self.input_handler.cleanup()
             self.terminal.cleanup()
         
         return 0
